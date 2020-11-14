@@ -14,9 +14,19 @@
          mutableMap["five"] = 5
          mutableMap.forEach { (k, v) -> println("$k -> $v")}
 
+         sayHello("Welcome", "Kotlin","Java","Dart")
+
+         print("say hello fun call convert array to string with * \n")
+         val  array= arrayOf("Kotlin","Java","Dart")
+         sayHello("Welcome", *array)
 
 
 
 
+     }
 
+     fun sayHello(greetings:String, vararg  itemToGreet:String){
+         itemToGreet.forEach{value ->
+             println("$greetings to the $value")
+         }
      }

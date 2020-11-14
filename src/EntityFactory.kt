@@ -2,7 +2,11 @@
 interface IdProvider{
     fun getId():String
 }
-class  Entity private constructor(val id:String){
+
+object  EntityFactory{
+    fun create()=Entity("id1202")
+}
+class  Entity (val id:String){
     companion object:IdProvider{
         private const val id="Id"
         fun create(){
@@ -19,10 +23,17 @@ class  Entity private constructor(val id:String){
 
     }
 
+    override fun toString(): String {
+        return "Your id is $id"
+    }
+
 }
 
 fun main() {
     var entity=Entity.create()
+    var entityFact=EntityFactory.create()
+  //  entityFact.created()
+    println(entityFact)
 
 
 }

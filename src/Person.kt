@@ -27,7 +27,7 @@
         return field
     }
 
-    fun personInfo()= print("FirstName $firstName lastName $lastName nickName ${nickName?:"no nickName"}")
+    fun personInfo()= println("FirstName $firstName lastName $lastName nickName ${nickName?:"no nickName"}")
 
       companion object {
           fun personInfo(person: Person):String {

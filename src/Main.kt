@@ -1,8 +1,8 @@
      fun  main(){
 var person=Person("Shah","Poran",23)
-         var p=Person()
-
-         print("first name : ${p.firstName} lastName  :${p.lastName}")
+        person.nickName="poran"
+         person.birthDate="01-04-1997"
+         print("nick name : ${person.nickName} birthDate  :${person.birthDate}")
 
 
 

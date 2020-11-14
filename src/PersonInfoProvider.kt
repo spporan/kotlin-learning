@@ -39,6 +39,14 @@ class  BasicInfo :PersonInfoProvider,SessionProvider{
 
 fun main(){
     val  basicInf=BasicInfo()
+
+    val provider=object :SessionProvider{
+        override fun sessionId() {
+            println("Session from annonimous")
+        }
+
+    }
+    provider.sessionId()
     checkProvider(basicInf)
 }
 

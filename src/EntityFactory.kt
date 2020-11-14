@@ -5,7 +5,7 @@ interface IdProvider{
 }
 
 enum class EntityType{
-    Easy,Medium,Hard;
+    Easy,Medium,Hard,Help;
     fun formattedName()=name.capitalize()
     fun toLow()=name.toLowerCase()
     fun toUp()=name.toUpperCase()
@@ -19,30 +19,41 @@ object  EntityFactory{
             EntityType.Easy-> type.formattedName()
             EntityType.Medium-> type.toLow()
             EntityType.Hard->type.toUp()
+            EntityType.Help -> type.toUp()
         }
-        return  Entity(id,name)
+        return  when(type){
+            EntityType.Easy -> Entity.Easy(id,name)
+            EntityType.Medium -> Entity.Medium(id,name)
+            EntityType.Hard -> Entity.Hard(id,name,2f)
+            EntityType.Help -> Entity.Help
+        }
     }
 }
-class  Entity (private val id:String, private val name:String){
-
-    fun created(){
-        println("Created factory")
+sealed class  Entity (){
+    object Help:Entity(){
+        val  name="Help"
 
     }
 
-    override fun toString(): String {
-        return "Your id is $id  and type $name"
-    }
+    data class Easy(val id:String,val name:String):Entity()
+    data class Medium(val id:String,val name: String):Entity()
+    data class Hard(val id: String,val name: String,val multiplier:Float):Entity()
 
 }
 
 fun main() {
-    var easy=EntityFactory.create(EntityType.Easy)
-    var medium=EntityFactory.create(EntityType.Medium)
-    var hard=EntityFactory.create(EntityType.Hard)
+    val easy=EntityFactory.create(EntityType.Easy)
+    val medium=EntityFactory.create(EntityType.Medium)
+    val hard=EntityFactory.create(EntityType.Hard)
 
     //  entityFact.created()
-    println(easy)
+    val mess=when(easy){
+        Entity.Help -> "Help class"
+        is Entity.Easy -> "Easy class"
+        is Entity.Medium -> "Medium class"
+        is Entity.Hard -> "Hard class"
+    }
+    println(mess)
     println(medium)
     println(hard)
 

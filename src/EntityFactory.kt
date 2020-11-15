@@ -49,7 +49,7 @@ fun main() {
     //  entityFact.created()
     val mess=when(easy){
         Entity.Help -> "Help class"
-        is Entity.Easy -> "Easy class"
+        is Entity.Easy ->"Easy property id ${easy.id }  name ${easy.name}"
         is Entity.Medium -> "Medium class"
         is Entity.Hard -> "Hard class"
     }
@@ -57,5 +57,13 @@ fun main() {
     println(medium)
     println(hard)
 
+    val ent1=Entity.Easy("12","poran")
+    val ent2=ent1.copy(id = "13")
+    if(ent1 == ent2){
+        println("They are equality")
+    }else{
+        println("They not are equality")
+
+    }
 
 }

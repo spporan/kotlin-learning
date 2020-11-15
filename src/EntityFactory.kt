@@ -40,9 +40,13 @@ sealed class  Entity (){
     data class Hard(val id: String,val name: String,val multiplier:Float):Entity()
 
 }
+
+//Extension function
 fun Entity.Medium.printInfo(){
     print("Medium Name $name and id $id")
 }
+
+//Extension property
 
 val Entity.Medium.info: String
     get() = "Medium class"
